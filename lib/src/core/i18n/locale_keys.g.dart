@@ -16,6 +16,7 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> _en = {
   "shared": {
+    "brand_name": "Pujit Somaiya",
     "get_started": "Get Started",
     "hire_me": "Hire Me",
     "view_cv": "View My CV",
@@ -27,8 +28,8 @@ class CodegenLoader extends AssetLoader{
     "close": "Close",
     "email": "Email",
     "linkedin": "LinkedIn",
-    "email_value": "pujit.somaiya@gmail.com",
-    "linkedin_value": "linkedin.com/in/pujitsomaiya"
+    "email_value": "pujit555@gmail.com",
+    "linkedin_value": "linkedin.com/in/pujitmsomaiya"
   },
   "nav": {
     "home": "Home",
@@ -109,6 +110,14 @@ class CodegenLoader extends AssetLoader{
     "work": {
       "subtitle": "Portfolio",
       "title": "Selected Case Studies",
+      "tags": {
+        "fintech": "FinTech",
+        "ai_health": "AI & Health",
+        "proptech": "PropTech",
+        "payments": "Payments",
+        "enterprise": "Enterprise",
+        "retail": "Retail"
+      },
       "projects": {
         "p1_title": "Global Money Transfer App",
         "p1_desc": "A high-security application facilitating cross-border payments with real-time exchange rates.",
@@ -127,26 +136,29 @@ class CodegenLoader extends AssetLoader{
     "skills": {
       "subtitle": "Tech Stack",
       "title": "Technical Arsenal",
-      "desc": "A comprehensive set of tools and technologies I use to build world-class mobile applications."
+      "desc": "A comprehensive set of tools and technologies I use to build world-class mobile applications.",
+      "category_mobile": "Mobile",
+      "category_architecture": "Architecture",
+      "category_backend_data": "Backend & Data"
     },
     "experience": {
       "subtitle": "Career Journey",
       "title": "Professional Experience",
       "role1_title": "Senior Software Engineer",
       "role1_company": "TatvaSoft",
-      "role1_period": "Jan 2021 — Present",
+      "role1_period": "Jul 2021 — Present",
       "role1_b1": "Leading development of enterprise-level FinTech and AI solutions.",
       "role1_b2": "Mentoring junior developers and defining mobile coding standards.",
       "role1_b3": "Optimized app performance by 40% using advanced caching strategies.",
       "role2_title": "Software Engineer",
       "role2_company": "TatvaSoft",
-      "role2_period": "Jun 2018 — Dec 2020",
+      "role2_period": "Aug 2020 — Jul 2021",
       "role2_b1": "Developed 5+ end-to-end mobile applications for international clients.",
       "role2_b2": "Integrated complex 3rd party APIs and real-time data services.",
       "role2_b3": "Executed migration from Java to Kotlin for multiple native apps.",
       "role3_title": "Trainee Software Engineer",
       "role3_company": "TatvaSoft",
-      "role3_period": "Jan 2018 — May 2018",
+      "role3_period": "Jan 2020 — Aug 2020",
       "role3_desc": "Intensive training on mobile technologies, software lifecycle, and agile methodologies. Built initial prototypes for internal tools."
     },
     "cta": {
@@ -154,7 +166,7 @@ class CodegenLoader extends AssetLoader{
       "desc": "Whether you’re a startup or an established enterprise, I can help you architect and develop a high-quality mobile solution."
     },
     "footer": {
-      "copyright": "© 2024 Pujit Somaiya • Senior Mobile App Engineer • Ahmedabad, India"
+      "copyright": "© {} Pujit Somaiya • Senior Mobile App Engineer • Ahmedabad, India"
     }
   },
   "auth": {
