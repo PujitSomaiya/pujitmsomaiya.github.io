@@ -11,7 +11,7 @@ class App extends StatelessWidget {
 
   Widget _buildMaterialApp(BuildContext context) {
     return MaterialApp.router(
-      title: 'pujit_portfolio',
+      title: 'shared.brand_name'.tr(),
       debugShowCheckedModeBanner: false,
       theme: buildLightTheme(primaryColorHex: '#fab5b9'),
       routerConfig: appRouter,

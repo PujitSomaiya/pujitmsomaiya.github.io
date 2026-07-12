@@ -42,7 +42,7 @@ class FooterSection extends StatelessWidget {
                 _buildSocialLinks(context),
                 const SizedBox(height: 24),
                 Text(
-                  'portfolio.footer.copyright'.tr(),
+                  'portfolio.footer.copyright'.tr(args: [DateTime.now().year.toString()]),
                   textAlign: TextAlign.center,
                   style: AppTextStyles.footerText.copyWith(
                     color: context.colors.onSurfaceVariant,
@@ -64,7 +64,7 @@ class FooterSection extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'portfolio.footer.copyright'.tr(),
+                          'portfolio.footer.copyright'.tr(args: [DateTime.now().year.toString()]),
                           style: AppTextStyles.footerText.copyWith(
                             color: context.colors.onSurfaceVariant,
                           ),

@@ -16,17 +16,17 @@ class TechStackSection extends StatelessWidget {
       (
         'portfolio.skills.category_mobile'.tr(),
         context.colors.primary,
-        ['Android (Native)', 'Flutter', 'Kotlin', 'Java', 'Dart', 'React Native']
+        ['Android (Native)', 'Jetpack Compose', 'Flutter', 'Kotlin', 'Java', 'Dart']
       ),
       (
         'portfolio.skills.category_architecture'.tr(),
         context.colors.secondary,
-        ['MVVM', 'Clean Architecture', 'Design Patterns', 'Provider / Bloc', 'Unit Testing']
+        ['MVVM', 'MVI', 'Clean Architecture', 'Provider / Bloc']
       ),
       (
         'portfolio.skills.category_backend_data'.tr(),
         context.colors.tertiary,
-        ['Firebase', 'REST APIs', 'SQLite / Room', 'Supabase', 'GraphQL']
+        ['Firebase', 'REST APIs', 'SQLite / Room', 'Supabase']
       ),
     ];
 

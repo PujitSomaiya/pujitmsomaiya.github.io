@@ -100,7 +100,7 @@ class HeroSection extends StatelessWidget {
             ),
             AppButton(
               label: 'shared.download_cv'.tr(),
-              onPressed: () => launchUrlHelper(BrandLinks.linkedin),
+              onPressed: () => launchUrlHelper(BrandLinks.resume),
               variant: ButtonVariant.outline,
               height: ButtonSize.large,
             ),
