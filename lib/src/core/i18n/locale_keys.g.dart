@@ -16,6 +16,7 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> _en = {
   "shared": {
+    "brand_name": "Pujit Somaiya",
     "get_started": "Get Started",
     "hire_me": "Hire Me",
     "view_cv": "View My CV",
@@ -27,8 +28,8 @@ class CodegenLoader extends AssetLoader{
     "close": "Close",
     "email": "Email",
     "linkedin": "LinkedIn",
-    "email_value": "pujit.somaiya@gmail.com",
-    "linkedin_value": "linkedin.com/in/pujitsomaiya"
+    "email_value": "pujit555@gmail.com",
+    "linkedin_value": "linkedin.com/in/pujitmsomaiya"
   },
   "nav": {
     "home": "Home",
@@ -109,6 +110,14 @@ class CodegenLoader extends AssetLoader{
     "work": {
       "subtitle": "Portfolio",
       "title": "Selected Case Studies",
+      "tags": {
+        "fintech": "FinTech",
+        "ai_health": "AI & Health",
+        "proptech": "PropTech",
+        "payments": "Payments",
+        "enterprise": "Enterprise",
+        "retail": "Retail"
+      },
       "projects": {
         "p1_title": "Global Money Transfer App",
         "p1_desc": "A high-security application facilitating cross-border payments with real-time exchange rates.",
@@ -127,7 +136,10 @@ class CodegenLoader extends AssetLoader{
     "skills": {
       "subtitle": "Tech Stack",
       "title": "Technical Arsenal",
-      "desc": "A comprehensive set of tools and technologies I use to build world-class mobile applications."
+      "desc": "A comprehensive set of tools and technologies I use to build world-class mobile applications.",
+      "category_mobile": "Mobile",
+      "category_architecture": "Architecture",
+      "category_backend_data": "Backend & Data"
     },
     "experience": {
       "subtitle": "Career Journey",
