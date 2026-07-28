@@ -10,124 +10,268 @@ class TechStackSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = isMobile ? 24.0 : 48.0;
+    if (isMobile) {
+      return _buildMobileLayout(context);
+    }
 
-    final skillsData = [
-      (
-        'portfolio.skills.category_mobile'.tr(),
-        context.colors.primary,
-        ['Android (Native)', 'Jetpack Compose', 'Flutter', 'Kotlin', 'Java', 'Dart']
-      ),
-      (
-        'portfolio.skills.category_architecture'.tr(),
-        context.colors.secondary,
-        ['MVVM', 'MVI', 'Clean Architecture', 'Provider / Bloc']
-      ),
-      (
-        'portfolio.skills.category_backend_data'.tr(),
-        context.colors.tertiary,
-        ['Firebase', 'REST APIs', 'SQLite / Room', 'Supabase']
-      ),
-    ];
-
-    final leftColumn = Column(
-      crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-      children: [
-        Text(
-          '03 // ${'portfolio.skills.subtitle'.tr().toUpperCase()}',
-          style: context.textTheme.labelMedium?.copyWith(
-            color: context.colors.tertiary,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
-          ),
-        ),
-
-        const SizedBox(height: 8),
-        Text(
-          'portfolio.skills.title'.tr(),
-          textAlign: isMobile ? TextAlign.center : TextAlign.start,
-          style: context.textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: context.colors.onSurface,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          'portfolio.skills.desc'.tr(),
-          textAlign: isMobile ? TextAlign.center : TextAlign.start,
-          style: context.textTheme.bodyMedium?.copyWith(
-            color: context.colors.onSurfaceVariant,
-            height: 1.6,
-          ),
-        ),
-      ],
-    );
-
-    final rightColumn = Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: skillsData.map((category) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                category.$1.toUpperCase(),
-                style: context.textTheme.labelSmall?.copyWith(
-                  color: category.$2,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.5,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 72),
+      alignment: Alignment.center,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Section title with trailing horizontal line
+            Row(
+              children: [
+                Text(
+                  'cyberpunk.nav_arsenal'.tr(),
+                  style: AppTextStyles.sectionTitle.copyWith(
+                    color: context.colors.primaryContainer, // Neon Purple
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: category.$3.map((skill) {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.03),
-                      borderRadius: AppBorders.sm,
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.08),
-                        width: 1,
-                      ),
-                    ),
-                    child: Text(
-                      skill,
-                      style: context.textTheme.labelMedium?.copyWith(
-                        color: context.colors.onSurface,
-                      ),
-                    ),
-                  );
-                }).toList(),
+                const SizedBox(width: 24),
+                Expanded(
+                  child: Divider(
+                    color: context.colors.outlineVariant.withValues(alpha: 0.3),
+                    thickness: 1,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 48),
+
+            // 3 HUD Columns Row
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Mobile Core
+                Expanded(
+                  child: _buildArsenalCard(
+                    context,
+                    'portfolio.skills.category_mobile'.tr().toUpperCase(),
+                    Icons.smartphone_rounded,
+                    context.colors.primaryContainer,
+                    ['ANDROID (NATIVE)', 'FLUTTER', 'KOTLIN', 'JAVA', 'DART', 'REACT NATIVE'],
+                  ),
+                ),
+                const SizedBox(width: 24),
+
+                // Strategic Arch
+                Expanded(
+                  child: _buildArsenalCard(
+                    context,
+                    'portfolio.skills.category_architecture'.tr().toUpperCase(),
+                    Icons.architecture_rounded,
+                    context.colors.secondary,
+                    ['MVVM', 'CLEAN ARCHITECTURE', 'DESIGN PATTERNS', 'PROVIDER / BLOC', 'UNIT TESTING'],
+                  ),
+                ),
+                const SizedBox(width: 24),
+
+                // Data Protocols
+                Expanded(
+                  child: _buildArsenalCard(
+                    context,
+                    'portfolio.skills.category_backend_data'.tr().toUpperCase(),
+                    Icons.storage_rounded,
+                    context.colors.tertiary,
+                    ['FIREBASE', 'REST APIS', 'SQLITE / ROOM', 'SUPABASE', 'GRAPHQL'],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildArsenalCard(
+    BuildContext context,
+    String title,
+    IconData icon,
+    Color color,
+    List<String> skills,
+  ) {
+    return HudBorder(
+      padding: const EdgeInsets.all(28),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(icon, color: color, size: 28),
+              const SizedBox(width: 12),
+              Text(
+                title,
+                style: AppTextStyles.cardTitle.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: context.colors.onSurface,
+                ),
               ),
             ],
           ),
-        );
-      }).toList(),
+          const SizedBox(height: 24),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: skills.map((skill) {
+              return Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: 0.05),
+                  border: Border.all(
+                    color: color.withValues(alpha: 0.2),
+                  ),
+                  borderRadius: AppBorders.xs,
+                ),
+                child: Text(
+                  skill,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: color,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
+  }
 
+  Widget _buildMobileLayout(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: padding, vertical: 72),
-      constraints: const BoxConstraints(maxWidth: 1200),
-      child: isMobile
-          ? Column(
-              children: [
-                leftColumn,
-                const SizedBox(height: 48),
-                rightColumn,
-              ],
-            )
-          : Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(flex: 5, child: leftColumn),
-                const SizedBox(width: 64),
-                Expanded(flex: 7, child: rightColumn),
-              ],
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section header with pulsing Cyber Green dot
+          Row(
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFF10B981), // Cyber Green
+                ),
+              ).animate(onPlay: (controller) => controller.repeat(reverse: true))
+               .fade(duration: const Duration(milliseconds: 600)),
+              const SizedBox(width: 8),
+              Text(
+                'cyberpunk.core_arsenal_stats'.tr().toUpperCase(),
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: const Color(0xFF10B981),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24),
+
+          // 2x2 Grid of Glass Panels
+          GridView.count(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 1.4,
+            children: [
+              _buildMobileStatPanel(
+                context,
+                'portfolio.skills.category_mobile'.tr().toUpperCase(),
+                'Android, Flutter, Kotlin, Java, Dart, React Native',
+                const Color(0xFF8B5CF6), // Neon Purple
+              ),
+              _buildMobileStatPanel(
+                context,
+                'portfolio.skills.category_architecture'.tr().toUpperCase(),
+                'MVVM, Clean Arch, Design Patterns, BLoC, Unit Testing',
+                const Color(0xFF10B981), // Cyber Green
+              ),
+              _buildMobileStatPanel(
+                context,
+                'portfolio.skills.category_backend_data'.tr().toUpperCase(),
+                'Firebase, REST, SQLite, Supabase, GraphQL',
+                const Color(0xFFF7931E), // Warning Orange
+              ),
+              _buildMobileStatPanel(
+                context,
+                'cyberpunk.nav_profile'.tr().toUpperCase(), // STATS label
+                '${'portfolio.stats.years_exp'.tr()} Yrs Exp // ${'portfolio.stats.projects'.tr()} Projects // ${'portfolio.stats.industries'.tr()} Sectors',
+                context.colors.primary, // Primary Accent
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMobileStatPanel(BuildContext context, String title, String subtitle, Color accentColor) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: const Color(0xB3161616),
+        border: Border.all(
+          color: context.colors.outlineVariant.withValues(alpha: 0.15),
+          width: 1,
+        ),
+        borderRadius: AppBorders.xs,
+      ),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(3),
+          bottomLeft: Radius.circular(3),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              left: 0,
+              top: 0,
+              bottom: 0,
+              child: Container(
+                width: 2,
+                color: accentColor,
+              ),
             ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(14, 12, 12, 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: accentColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 8,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subtitle,
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: context.colors.onSurfaceVariant,
+                      fontSize: 9,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

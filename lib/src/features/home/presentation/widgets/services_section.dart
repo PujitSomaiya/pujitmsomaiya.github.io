@@ -1,5 +1,4 @@
 import 'package:pujit_portfolio/src/imports/imports.dart';
-import 'glass_card.dart';
 
 class ServicesSection extends StatelessWidget {
   final bool isMobile;
@@ -13,89 +12,254 @@ class ServicesSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = isMobile ? 24.0 : 48.0;
-
     final servicesList = [
-      (Icons.smartphone_rounded, 'portfolio.services.s1_title'.tr(), 'portfolio.services.s1_desc'.tr(), context.colors.primary),
-      (Icons.devices_rounded, 'portfolio.services.s2_title'.tr(), 'portfolio.services.s2_desc'.tr(), context.colors.secondary),
-      (Icons.bug_report_outlined, 'portfolio.services.s3_title'.tr(), 'portfolio.services.s3_desc'.tr(), context.colors.primary),
-      (Icons.palette_outlined, 'portfolio.services.s4_title'.tr(), 'portfolio.services.s4_desc'.tr(), context.colors.secondary),
-      (Icons.api_rounded, 'portfolio.services.s5_title'.tr(), 'portfolio.services.s5_desc'.tr(), context.colors.primary),
-      (Icons.payments_outlined, 'portfolio.services.s6_title'.tr(), 'portfolio.services.s6_desc'.tr(), context.colors.secondary),
-      (Icons.speed_rounded, 'portfolio.services.s7_title'.tr(), 'portfolio.services.s7_desc'.tr(), context.colors.primary),
-      (Icons.cloud_upload_outlined, 'portfolio.services.s8_title'.tr(), 'portfolio.services.s8_desc'.tr(), context.colors.secondary),
+      (Icons.android_rounded, 'portfolio.services.s1_title'.tr().toUpperCase(), 'portfolio.services.s1_desc'.tr(), const Color(0xFF8B5CF6)), // Neon Purple
+      (Icons.devices_rounded, 'portfolio.services.s2_title'.tr().toUpperCase(), 'portfolio.services.s2_desc'.tr(), const Color(0xFF10B981)), // Cyber Green
+      (Icons.bug_report_outlined, 'portfolio.services.s3_title'.tr().toUpperCase(), 'portfolio.services.s3_desc'.tr(), const Color(0xFFF7931E)), // Warning Orange
+      (Icons.palette_outlined, 'portfolio.services.s4_title'.tr().toUpperCase(), 'portfolio.services.s4_desc'.tr(), const Color(0xFFD0BCFF)), // Primary/Lavender
+      (Icons.api_rounded, 'portfolio.services.s5_title'.tr().toUpperCase(), 'portfolio.services.s5_desc'.tr(), const Color(0xFF8B5CF6)),
+      (Icons.payments_outlined, 'portfolio.services.s6_title'.tr().toUpperCase(), 'portfolio.services.s6_desc'.tr(), const Color(0xFF10B981)),
+      (Icons.speed_rounded, 'portfolio.services.s7_title'.tr().toUpperCase(), 'portfolio.services.s7_desc'.tr(), const Color(0xFFF7931E)),
+      (Icons.cloud_upload_outlined, 'portfolio.services.s8_title'.tr().toUpperCase(), 'portfolio.services.s8_desc'.tr(), const Color(0xFFD0BCFF)),
     ];
 
+    if (isMobile) {
+      return _buildMobileLayout(context, servicesList);
+    }
+
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: padding, vertical: 72),
+      padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 72),
       width: double.infinity,
       color: Colors.transparent,
-      child: Center(
-        child: Container(
-          constraints: const BoxConstraints(maxWidth: 1200),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+      alignment: Alignment.center,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header right aligned with a leading horizontal line
+            Row(
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: context.colors.outlineVariant.withValues(alpha: 0.3),
+                    thickness: 1,
+                  ),
+                ),
+                const SizedBox(width: 24),
+                Text(
+                  'cyberpunk.mission_solutions'.tr().toUpperCase(),
+                  style: AppTextStyles.sectionTitle.copyWith(
+                    color: context.colors.secondary, // Cyber Green
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 48),
+
+            // 4-column Services Grid
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: servicesList.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: screenWidth > 1100 ? 4 : 2,
+                crossAxisSpacing: 24,
+                mainAxisSpacing: 24,
+                childAspectRatio: 1.5,
+              ),
+              itemBuilder: (context, index) {
+                final service = servicesList[index];
+                return _ServiceCard(
+                  icon: service.$1,
+                  title: service.$2,
+                  desc: service.$3,
+                  topBorderColor: service.$4,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMobileLayout(BuildContext context, List<(IconData, String, String, Color)> services) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Section title with pulsing Neon Purple dot
+          Row(
             children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xFF8B5CF6), // Neon Purple
+                ),
+              ).animate(onPlay: (controller) => controller.repeat(reverse: true))
+               .fade(duration: const Duration(milliseconds: 600)),
+              const SizedBox(width: 8),
               Text(
-                '02 // ${'portfolio.services.subtitle'.tr().toUpperCase()}',
-                style: context.textTheme.labelMedium?.copyWith(
-                  color: context.colors.tertiary,
+                'cyberpunk.mission_solutions'.tr().toUpperCase(),
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: const Color(0xFF8B5CF6),
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
               ),
+            ],
+          ),
+          const SizedBox(height: 24),
 
-              const SizedBox(height: 8),
-              Text(
-                'portfolio.services.title'.tr(),
-                style: context.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: context.colors.onSurface,
+          // 2-column Services Grid
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: services.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 2.2,
+            ),
+            itemBuilder: (context, index) {
+              final service = services[index];
+              return DecoratedBox(
+                decoration: BoxDecoration(
+                  color: const Color(0xB3161616),
+                  border: Border.all(
+                    color: context.colors.outlineVariant.withValues(alpha: 0.15),
+                    width: 1,
+                  ),
+                  borderRadius: AppBorders.xs,
                 ),
-              ),
-              const SizedBox(height: 48),
-              // Services Grid
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: servicesList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: isMobile ? 1 : (screenWidth < 1100 ? 2 : 4),
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: isMobile ? 1.8 : 1.1,
-                ),
-                itemBuilder: (context, index) {
-                  final service = servicesList[index];
-                  return GlassCard(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(service.$1, size: 28, color: service.$4),
-                        const SizedBox(height: 16),
-                        Text(
-                          service.$2,
-                          style: context.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: context.colors.onSurface,
-                          ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(3),
+                    topRight: Radius.circular(3),
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        child: Container(
+                          height: 1.5,
+                          color: service.$4.withValues(alpha: 0.4),
                         ),
-                        const SizedBox(height: 8),
-                        Expanded(
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 13.5, 12, 12),
+                        child: Center(
                           child: Text(
-                            service.$3,
-                            style: context.textTheme.bodySmall?.copyWith(
-                              color: context.colors.onSurfaceVariant,
-                              height: 1.4,
+                            service.$2,
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: context.colors.onSurface,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 9,
+                              letterSpacing: 0.5,
                             ),
                           ),
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ServiceCard extends StatefulWidget {
+  final IconData icon;
+  final String title;
+  final String desc;
+  final Color topBorderColor;
+
+  const _ServiceCard({
+    required this.icon,
+    required this.title,
+    required this.desc,
+    required this.topBorderColor,
+  });
+
+  @override
+  State<_ServiceCard> createState() => _ServiceCardState();
+}
+
+class _ServiceCardState extends State<_ServiceCard> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          color: _isHovered
+              ? context.colors.surfaceContainerHigh.withValues(alpha: 0.5)
+              : context.colors.surfaceContainer.withValues(alpha: 0.4),
+          border: Border.all(
+            color: context.colors.outlineVariant.withValues(alpha: 0.15),
+            width: 1,
+          ),
+          borderRadius: AppBorders.xs,
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(3),
+            topRight: Radius.circular(3),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: 2,
+                  color: widget.topBorderColor,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 26, 24, 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(widget.icon, color: widget.topBorderColor, size: 28),
+                    const SizedBox(height: 16),
+                    Text(
+                      widget.title,
+                      style: AppTextStyles.cardTitle.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: context.colors.onSurface,
+                      ),
                     ),
-                  );
-                },
+                    const SizedBox(height: 8),
+                    Text(
+                      widget.desc,
+                      style: AppTextStyles.bodySmall.copyWith(
+                        color: context.colors.onSurfaceVariant.withValues(alpha: 0.6),
+                        height: 1.4,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

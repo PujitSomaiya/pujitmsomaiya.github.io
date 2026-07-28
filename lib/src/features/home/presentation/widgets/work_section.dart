@@ -1,5 +1,4 @@
 import 'package:pujit_portfolio/src/imports/imports.dart';
-import 'glass_card.dart';
 
 class WorkSection extends StatelessWidget {
   final bool isMobile;
@@ -11,235 +10,427 @@ class WorkSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = isMobile ? 24.0 : 48.0;
-
     final projects = [
       {
-        'title': 'portfolio.work.projects.p1_title'.tr(),
+        'title': 'portfolio.work.projects.p1_title'.tr().toUpperCase(),
         'desc': 'portfolio.work.projects.p1_desc'.tr(),
         'tag': 'portfolio.work.tags.fintech'.tr(),
-        'tech': ['Android', 'Payment Gateways', 'Kotlin', 'MVVM'],
+        'icon': Icons.payments_rounded,
+        'progress': 0.95,
+        'accent': const Color(0xFF10B981), // Cyber Green
         'img': BrandLinks.project1Image,
       },
       {
-        'title': 'portfolio.work.projects.p2_title'.tr(),
+        'title': 'portfolio.work.projects.p2_title'.tr().toUpperCase(),
         'desc': 'portfolio.work.projects.p2_desc'.tr(),
         'tag': 'portfolio.work.tags.ai_health'.tr(),
-        'tech': ['Flutter', 'Dart'],
+        'icon': Icons.smart_toy_rounded,
+        'progress': 0.88,
+        'accent': const Color(0xFF8B5CF6), // Neon Purple
         'img': BrandLinks.project2Image,
       },
       {
-        'title': 'portfolio.work.projects.p3_title'.tr(),
+        'title': 'portfolio.work.projects.p3_title'.tr().toUpperCase(),
         'desc': 'portfolio.work.projects.p3_desc'.tr(),
         'tag': 'portfolio.work.tags.proptech'.tr(),
-        'tech': ['Android', 'JAVA', 'MVC'],
+        'icon': Icons.vpn_key_rounded,
+        'progress': 0.92,
+        'accent': const Color(0xFFF7931E), // Warning Orange
         'img': BrandLinks.project3Image,
       },
       {
-        'title': 'portfolio.work.projects.p4_title'.tr(),
+        'title': 'portfolio.work.projects.p4_title'.tr().toUpperCase(),
         'desc': 'portfolio.work.projects.p4_desc'.tr(),
         'tag': 'portfolio.work.tags.payments'.tr(),
-        'tech': ['Android', 'Java', 'MVC'],
-        'img': BrandLinks.project4Image,
+        'icon': Icons.account_balance_wallet_rounded,
+        'progress': 0.90,
+        'accent': const Color(0xFFD0BCFF), // Lavender/Primary
+        'img': BrandLinks.project1Image,
       },
       {
-        'title': 'portfolio.work.projects.p5_title'.tr(),
+        'title': 'portfolio.work.projects.p5_title'.tr().toUpperCase(),
         'desc': 'portfolio.work.projects.p5_desc'.tr(),
         'tag': 'portfolio.work.tags.enterprise'.tr(),
-        'tech': ['Android', 'Kotlin', 'MVVM'],
-        'img': BrandLinks.project5Image,
+        'icon': Icons.business_center_rounded,
+        'progress': 0.85,
+        'accent': const Color(0xFF10B981), // Cyber Green
+        'img': BrandLinks.project2Image,
       },
       {
-        'title': 'portfolio.work.projects.p6_title'.tr(),
+        'title': 'portfolio.work.projects.p6_title'.tr().toUpperCase(),
         'desc': 'portfolio.work.projects.p6_desc'.tr(),
         'tag': 'portfolio.work.tags.retail'.tr(),
-        'tech': ['Android', 'Payment Gateways', 'Kotlin', 'MVVM'],
-        'img': BrandLinks.project6Image,
+        'icon': Icons.shopping_cart_rounded,
+        'progress': 0.89,
+        'accent': const Color(0xFF8B5CF6), // Neon Purple
+        'img': BrandLinks.project3Image,
       },
     ];
 
+    if (isMobile) {
+      return _buildMobileLayout(context, projects);
+    }
+
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: padding, vertical: 72),
-      constraints: const BoxConstraints(maxWidth: 1200),
+      padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 72),
+      alignment: Alignment.center,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 1200),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Header right aligned with a leading horizontal line
+            Row(
+              children: [
+                Expanded(
+                  child: Divider(
+                    color: context.colors.outlineVariant.withValues(alpha: 0.3),
+                    thickness: 1,
+                  ),
+                ),
+                const SizedBox(width: 24),
+                Text(
+                  'cyberpunk.project_archives'.tr().toUpperCase(),
+                  style: AppTextStyles.sectionTitle.copyWith(
+                    color: context.colors.secondary, // Cyber Green
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 48),
+
+            // Web Projects Grid
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: projects.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                crossAxisSpacing: 24,
+                mainAxisSpacing: 24,
+                childAspectRatio: 0.78,
+              ),
+              itemBuilder: (context, index) {
+                final project = projects[index];
+                return _ProjectCard(
+                  title: project['title'] as String,
+                  desc: project['desc'] as String,
+                  tag: project['tag'] as String,
+                  imgUrl: project['img'] as String,
+                  progress: project['progress'] as double,
+                  accentColor: project['accent'] as Color,
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMobileLayout(BuildContext context, List<Map<String, dynamic>> projects) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '04 // ${'portfolio.work.subtitle'.tr().toUpperCase()}',
-            style: context.textTheme.labelMedium?.copyWith(
-              color: context.colors.tertiary,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2,
-            ),
+          // Section header with pulsing Cyber Green dot on left, "6 ENTRIES FOUND" on right
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 8,
+                    height: 8,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFF10B981), // Cyber Green
+                    ),
+                  ).animate(onPlay: (controller) => controller.repeat(reverse: true))
+                   .fade(duration: const Duration(milliseconds: 600)),
+                  const SizedBox(width: 8),
+                  Text(
+                    'cyberpunk.project_archives'.tr().toUpperCase(),
+                    style: AppTextStyles.bodySmall.copyWith(
+                      color: const Color(0xFF10B981),
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                'cyberpunk.entries_found'.tr(args: ['${projects.length}']),
+                style: AppTextStyles.bodySmall.copyWith(
+                  color: context.colors.onSurfaceVariant.withValues(alpha: 0.5),
+                  fontSize: 9,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
-          Text(
-            'portfolio.work.title'.tr(),
-            style: context.textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: context.colors.onSurface,
-            ),
-          ),
-          const SizedBox(height: 48),
-          // Project grid
-          GridView.builder(
+          const SizedBox(height: 24),
+
+          // Vertical stacked lists of 6 project tiles with colored left-borders
+          ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: projects.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: isMobile ? 1 : 3,
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 24,
-              childAspectRatio: isMobile ? 1.0 : 0.76,
-            ),
             itemBuilder: (context, index) {
               final project = projects[index];
-              final techStack = project['tech'] as List<String>;
-              return GlassCard(
-                padding: EdgeInsets.zero,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Image banner with Tag overlay
-                    Expanded(
-                      flex: 5,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          CachedNetworkImage(
-                            imageUrl: project['img'] as String,
-                            fit: BoxFit.cover,
-                            placeholder: (context, url) => ColoredBox(
-                              color: context.colors.surfaceContainerHighest,
-                              child: const Center(
-                                child: CircularProgressIndicator(strokeWidth: 2),
-                              ),
-                            ),
-                            errorWidget: (context, url, error) => ColoredBox(
-                              color: context.colors.surfaceContainerHighest,
-                              child: const Center(
-                                child: Icon(Icons.image_not_supported_outlined, size: 40),
-                              ),
-                            ),
-                          ),
-                          // Transparent dark overlay
-                          Container(
-                            color: Colors.black.withValues(alpha: 0.3),
-                          ),
-                          // Category Tag overlay
-                          Positioned(
-                            top: 16,
-                            left: 16,
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                              decoration: BoxDecoration(
-                                color: context.colors.primary.withValues(alpha: 0.2),
-                                borderRadius: AppBorders.full,
-                                border: Border.all(
-                                  color: context.colors.primary.withValues(alpha: 0.3),
-                                ),
-                              ),
-                              child: Text(
-                                project['tag'] as String,
-                                style: context.textTheme.labelSmall?.copyWith(
-                                  color: context.colors.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+              final accentColor = project['accent'] as Color;
+              final icon = project['icon'] as IconData;
+
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: const Color(0xB3161616),
+                    border: Border.all(
+                      color: context.colors.outlineVariant.withValues(alpha: 0.15),
+                      width: 1,
                     ),
-                    // Project info details
-                    Expanded(
-                      flex: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              project['title'] as String,
-                              style: context.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: context.colors.onSurface,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Expanded(
-                              child: Text(
-                                project['desc'] as String,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: context.textTheme.bodySmall?.copyWith(
-                                  color: context.colors.onSurfaceVariant,
-                                  height: 1.4,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 12),
-                            // Tag badges
-                            Wrap(
-                              spacing: 6,
-                              runSpacing: 6,
-                              children: techStack.map((tech) {
-                                return Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withValues(alpha: 0.05),
-                                    borderRadius: AppBorders.xs,
-                                  ),
-                                  child: Text(
-                                    tech,
-                                    style: AppTextStyles.chipText.copyWith(
-                                      fontSize: 10,
-                                      color: const Color(0xFFC3C6D7),
-                                    ),
-                                  ),
-                                );
-                              }).toList(),
-                            ),
-                            const Spacer(),
-                            // Performance Meter
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'SYS.PERF_INDEX',
-                                  style: AppTextStyles.bodySmall.copyWith(
-                                    color: context.colors.onSurfaceVariant.withValues(alpha: 0.6),
-                                  ),
-                                ),
-                                Text(
-                                  '${((0.96 - (index * 0.03)) * 100).toInt()}%',
-                                  style: AppTextStyles.bodySmall.copyWith(
-                                    color: context.colors.secondary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 6),
-                            ClipRRect(
-                              borderRadius: AppBorders.xs,
-                              child: LinearProgressIndicator(
-                                value: 0.96 - (index * 0.03),
-                                minHeight: 4,
-                                backgroundColor: Colors.white.withValues(alpha: 0.05),
-                                valueColor: AlwaysStoppedAnimation<Color>(context.colors.secondary),
-                              ),
-                            ),
-                          ],
+                    borderRadius: AppBorders.xs,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(3),
+                      bottomLeft: Radius.circular(3),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          bottom: 0,
+                          child: Container(
+                            width: 2,
+                            color: accentColor,
+                          ),
                         ),
-                      ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(18, 16, 16, 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      project['title'] as String,
+                                      style: context.textTheme.titleMedium?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: context.colors.onSurface,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 4),
+                                    Text(
+                                      '${project['tag']} // ${project['desc']}',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: AppTextStyles.bodySmall.copyWith(
+                                        color: context.colors.onSurfaceVariant.withValues(alpha: 0.6),
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Icon(
+                                icon,
+                                color: accentColor,
+                                size: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               );
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ProjectCard extends StatefulWidget {
+  final String title;
+  final String desc;
+  final String tag;
+  final String imgUrl;
+  final double progress;
+  final Color accentColor;
+
+  const _ProjectCard({
+    required this.title,
+    required this.desc,
+    required this.tag,
+    required this.imgUrl,
+    required this.progress,
+    required this.accentColor,
+  });
+
+  @override
+  State<_ProjectCard> createState() => _ProjectCardState();
+}
+
+class _ProjectCardState extends State<_ProjectCard> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedScale(
+        scale: _isHovered ? 1.02 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            color: context.colors.surfaceContainer.withValues(alpha: 0.4),
+            border: Border.all(
+              color: _isHovered
+                  ? widget.accentColor
+                  : context.colors.outlineVariant.withValues(alpha: 0.15),
+              width: 1.5,
+            ),
+            borderRadius: AppBorders.xs,
+          ),
+          child: ClipRRect(
+            borderRadius: AppBorders.xs,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Banner Image
+                Expanded(
+                  flex: 5,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      CachedNetworkImage(
+                        imageUrl: widget.imgUrl,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => ColoredBox(
+                          color: context.colors.surfaceContainerHighest,
+                          child: const Center(
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => ColoredBox(
+                          color: context.colors.surfaceContainerHighest,
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported_outlined, size: 40),
+                          ),
+                        ),
+                      ),
+                      // Dark Overlay
+                      Container(color: Colors.black.withValues(alpha: 0.35)),
+                      // Tag
+                      Positioned(
+                        top: 16,
+                        left: 16,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: widget.accentColor.withValues(alpha: 0.15),
+                            borderRadius: AppBorders.xs,
+                            border: Border.all(
+                              color: widget.accentColor.withValues(alpha: 0.3),
+                            ),
+                          ),
+                          child: Text(
+                            widget.tag.toUpperCase(),
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: widget.accentColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 9,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Info details
+                Expanded(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: AppTextStyles.cardTitle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: context.colors.onSurface,
+                            fontSize: 15,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: Text(
+                            widget.desc,
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: context.colors.onSurfaceVariant.withValues(alpha: 0.6),
+                              height: 1.4,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+
+                        // Performance progress meter
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'cyberpunk.sys_perf_index'.tr(),
+                              style: AppTextStyles.bodySmall.copyWith(
+                                color: context.colors.onSurfaceVariant.withValues(alpha: 0.4),
+                                fontSize: 9,
+                              ),
+                            ),
+                            Text(
+                              '${(widget.progress * 100).toInt()}%',
+                              style: AppTextStyles.bodySmall.copyWith(
+                                color: context.colors.secondary, // Cyber Green
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 6),
+                        ClipRRect(
+                          borderRadius: AppBorders.xs,
+                          child: LinearProgressIndicator(
+                            value: widget.progress,
+                            minHeight: 4,
+                            backgroundColor: Colors.white.withValues(alpha: 0.05),
+                            valueColor: AlwaysStoppedAnimation<Color>(context.colors.secondary),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
