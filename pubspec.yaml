@@ -91,3 +91,6 @@ flutter:
     - assets/translations/
     - assets/env
 
+  shaders:
+    - shaders/background.frag
+

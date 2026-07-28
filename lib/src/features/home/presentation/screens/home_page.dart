@@ -70,47 +70,9 @@ class HomePage extends HookWidget {
     final isMobile = screenWidth < 900;
 
     return Scaffold(
-      backgroundColor: context.colors.surface,
+      backgroundColor: Colors.transparent,
       body: Stack(
         children: [
-          // Background Glows
-          Positioned(
-            left: -200,
-            top: -200,
-            child: Container(
-              width: isMobile ? 400 : 700,
-              height: isMobile ? 400 : 700,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    const Color(0xFF2563EB).withValues(alpha: 0.12),
-                    const Color(0xFF2563EB).withValues(alpha: 0),
-                  ],
-                  stops: const [0.0, 0.7],
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            right: -200,
-            bottom: 100,
-            child: Container(
-              width: isMobile ? 400 : 700,
-              height: isMobile ? 400 : 700,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    const Color(0xFF2563EB).withValues(alpha: 0.12),
-                    const Color(0xFF2563EB).withValues(alpha: 0),
-                  ],
-                  stops: const [0.0, 0.7],
-                ),
-              ),
-            ),
-          ),
-
           // Scrollable Body
           Scrollbar(
             controller: scrollController,

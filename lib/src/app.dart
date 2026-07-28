@@ -22,8 +22,10 @@ class App extends StatelessWidget {
         Widget current = child!;
         current = SkeletonWrapper(child: current);
         current = SessionListenerWrapper(child: current);
+        current = ShaderBackground(child: current);
         return current;
       },
+
     );
   }
 }
