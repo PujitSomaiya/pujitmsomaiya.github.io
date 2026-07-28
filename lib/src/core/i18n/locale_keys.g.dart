@@ -139,7 +139,10 @@ class CodegenLoader extends AssetLoader{
       "desc": "A comprehensive set of tools and technologies I use to build world-class mobile applications.",
       "category_mobile": "Mobile",
       "category_architecture": "Architecture",
-      "category_backend_data": "Backend & Data"
+      "category_backend_data": "Backend & Data",
+      "skills_mobile": "Android (Native), Flutter, Kotlin, Java, Dart",
+      "skills_architecture": "MVVM, Clean Architecture, Design Patterns, BLoC",
+      "skills_backend_data": "Firebase, REST APIs, SQLite / Room, Supabase"
     },
     "experience": {
       "subtitle": "Career Journey",
