@@ -34,13 +34,14 @@ class TechStackSection extends StatelessWidget {
       crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         Text(
-          'portfolio.skills.subtitle'.tr().toUpperCase(),
+          '03 // ${'portfolio.skills.subtitle'.tr().toUpperCase()}',
           style: context.textTheme.labelMedium?.copyWith(
             color: context.colors.tertiary,
             fontWeight: FontWeight.bold,
             letterSpacing: 2,
           ),
         ),
+
         const SizedBox(height: 8),
         Text(
           'portfolio.skills.title'.tr(),

@@ -24,13 +24,14 @@ class AboutSection extends StatelessWidget {
       crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
         Text(
-          'portfolio.about.subtitle'.tr().toUpperCase(),
+          '01 // ${'portfolio.about.subtitle'.tr().toUpperCase()}',
           style: context.textTheme.labelMedium?.copyWith(
             color: context.colors.tertiary,
             fontWeight: FontWeight.bold,
             letterSpacing: 2,
           ),
         ),
+
         const SizedBox(height: 8),
         Text(
           'portfolio.about.title'.tr(),

@@ -29,7 +29,7 @@ class ServicesSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: padding, vertical: 72),
       width: double.infinity,
-      color: const Color(0xFF151B2A), // Low surface container color
+      color: Colors.transparent,
       child: Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 1200),
@@ -37,13 +37,14 @@ class ServicesSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'portfolio.services.subtitle'.tr().toUpperCase(),
+                '02 // ${'portfolio.services.subtitle'.tr().toUpperCase()}',
                 style: context.textTheme.labelMedium?.copyWith(
                   color: context.colors.tertiary,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
               ),
+
               const SizedBox(height: 8),
               Text(
                 'portfolio.services.title'.tr(),

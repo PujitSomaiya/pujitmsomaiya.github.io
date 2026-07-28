@@ -14,24 +14,24 @@ abstract final class AppBorders {
   /// 4 pt — subtle rounding, used for small chips, badges.
   static const BorderRadius xs = BorderRadius.all(Radius.circular(4));
 
-  /// 8 pt — standard rounding for buttons, text fields.
-  static const BorderRadius sm = BorderRadius.all(Radius.circular(8));
+  /// 4 pt — standard rounding for buttons, text fields.
+  static const BorderRadius sm = BorderRadius.all(Radius.circular(4));
 
-  /// 12 pt — medium rounding for cards, list tiles.
-  static const BorderRadius md = BorderRadius.all(Radius.circular(12));
+  /// 4 pt — medium rounding for cards, list tiles.
+  static const BorderRadius md = BorderRadius.all(Radius.circular(4));
 
-  /// 16 pt — large rounding for modals, bottom sheets.
-  static const BorderRadius lg = BorderRadius.all(Radius.circular(16));
+  /// 4 pt — large rounding for modals, bottom sheets.
+  static const BorderRadius lg = BorderRadius.all(Radius.circular(4));
 
-  /// 24 pt — extra large rounding for dialogs, feature cards.
-  static const BorderRadius xl = BorderRadius.all(Radius.circular(24));
+  /// 4 pt — extra large rounding for dialogs, feature cards.
+  static const BorderRadius xl = BorderRadius.all(Radius.circular(4));
 
-  /// 32 pt — double extra large rounding for premium glass cards.
-  static const BorderRadius xxl = BorderRadius.all(Radius.circular(32));
+  /// 4 pt — double extra large rounding for premium glass cards.
+  static const BorderRadius xxl = BorderRadius.all(Radius.circular(4));
 
   /// 28 pt — Material 3 bottom sheet top radius.
   static const BorderRadius bottomSheet = BorderRadius.vertical(
-    top: Radius.circular(28),
+    top: Radius.circular(4),
   );
 
   /// Fully circular (pill/stadium shape).
@@ -40,16 +40,17 @@ abstract final class AppBorders {
   // ── Semantic aliases ──────────────────────────────────────────────────────
 
   /// Default button border radius.
-  static const BorderRadius button = lg;
+  static const BorderRadius button = xs;
 
   /// Default card border radius.
-  static const BorderRadius card = xxl;
+  static const BorderRadius card = xs;
 
   /// Default input field border radius.
-  static const BorderRadius input = sm;
+  static const BorderRadius input = xs;
 
   /// Default dialog border radius.
-  static const BorderRadius dialog = xl;
+  static const BorderRadius dialog = xs;
+
 
   // ── RoundedRectangleBorder shapes (for ShapeBorder APIs) ─────────────────
 

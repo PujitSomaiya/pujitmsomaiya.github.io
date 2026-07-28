@@ -47,7 +47,7 @@ class ExperienceSection extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: padding, vertical: 72),
       width: double.infinity,
-      color: const Color(0xFF151B2A), // Low surface container color
+      color: Colors.transparent,
       child: Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 900),
@@ -55,13 +55,14 @@ class ExperienceSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'portfolio.experience.subtitle'.tr().toUpperCase(),
+                '05 // ${'portfolio.experience.subtitle'.tr().toUpperCase()}',
                 style: context.textTheme.labelMedium?.copyWith(
                   color: context.colors.tertiary,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
               ),
+
               const SizedBox(height: 8),
               Text(
                 'portfolio.experience.title'.tr(),

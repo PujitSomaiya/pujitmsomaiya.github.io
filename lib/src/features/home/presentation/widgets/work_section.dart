@@ -65,7 +65,7 @@ class WorkSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'portfolio.work.subtitle'.tr().toUpperCase(),
+            '04 // ${'portfolio.work.subtitle'.tr().toUpperCase()}',
             style: context.textTheme.labelMedium?.copyWith(
               color: context.colors.tertiary,
               fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class WorkSection extends StatelessWidget {
               crossAxisCount: isMobile ? 1 : 3,
               crossAxisSpacing: 24,
               mainAxisSpacing: 24,
-              childAspectRatio: isMobile ? 1.0 : 0.85,
+              childAspectRatio: isMobile ? 1.0 : 0.76,
             ),
             itemBuilder: (context, index) {
               final project = projects[index];
@@ -199,6 +199,36 @@ class WorkSection extends StatelessWidget {
                                   ),
                                 );
                               }).toList(),
+                            ),
+                            const Spacer(),
+                            // Performance Meter
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'SYS.PERF_INDEX',
+                                  style: AppTextStyles.bodySmall.copyWith(
+                                    color: context.colors.onSurfaceVariant.withValues(alpha: 0.6),
+                                  ),
+                                ),
+                                Text(
+                                  '${((0.96 - (index * 0.03)) * 100).toInt()}%',
+                                  style: AppTextStyles.bodySmall.copyWith(
+                                    color: context.colors.secondary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 6),
+                            ClipRRect(
+                              borderRadius: AppBorders.xs,
+                              child: LinearProgressIndicator(
+                                value: 0.96 - (index * 0.03),
+                                minHeight: 4,
+                                backgroundColor: Colors.white.withValues(alpha: 0.05),
+                                valueColor: AlwaysStoppedAnimation<Color>(context.colors.secondary),
+                              ),
                             ),
                           ],
                         ),

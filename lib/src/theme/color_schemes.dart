@@ -107,19 +107,20 @@ class AppPalettes {
   );
 
   static const dark = AppColorsExtension(
-    success: Color(0xFF81C784),
-    onSuccess: Color(0xFF003300),
-    successContainer: Color(0xFF1B5E20),
-    onSuccessContainer: Color(0xFFA5D6A7),
-    warning: Color(0xFFFFB74D),
-    onWarning: Color(0xFF5D4037),
-    warningContainer: Color(0xFFE65100),
-    onWarningContainer: Color(0xFFFFCC80),
-    info: Color(0xFF4FC3F7),
-    onInfo: Color(0xFF01579B),
-    infoContainer: Color(0xFF0277BD),
-    onInfoContainer: Color(0xFFE1F5FE),
+    success: Color(0xFF10B981),
+    onSuccess: Color(0xFF003824),
+    successContainer: Color(0xFF00311F),
+    onSuccessContainer: Color(0xFF4EDEA3),
+    warning: Color(0xFFF7931E),
+    onWarning: Color(0xFF4B2800),
+    warningContainer: Color(0xFF412200),
+    onWarningContainer: Color(0xFFFFB875),
+    info: Color(0xFF8B5CF6),
+    onInfo: Color(0xFF3C0091),
+    infoContainer: Color(0xFF340080),
+    onInfoContainer: Color(0xFFD0BCFF),
   );
+
 }
 
 /// Access semantic colors via `context.appColors` from `context_extension.dart`.
