@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
+import 'app_colors.dart';
 import 'text_theme.dart';
 import 'color_schemes.dart';
 
@@ -349,25 +350,25 @@ ThemeData _buildTheme(ColorScheme colorScheme, AppColorsExtension customColors) 
 ThemeData buildLightTheme({required String primaryColorHex}) {
   const colorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xFFD0BCFF),
-    onPrimary: Color(0xFF3C0091),
-    primaryContainer: Color(0xFF8B5CF6),
-    onPrimaryContainer: Color(0xFFE5D9FF),
-    secondary: Color(0xFF4EDEA3),
-    onSecondary: Color(0xFF003824),
-    secondaryContainer: Color(0xFF10B981),
-    onSecondaryContainer: Color(0xFFD0FCE0),
-    tertiary: Color(0xFFF7931E),
-    onTertiary: Color(0xFF4B2800),
-    tertiaryContainer: Color(0xFFFFDCC0),
-    onTertiaryContainer: Color(0xFF5A3000),
+    primary: AppColors.primary,
+    onPrimary: AppColors.onPrimary,
+    primaryContainer: AppColors.primaryContainer,
+    onPrimaryContainer: AppColors.onPrimaryContainer,
+    secondary: AppColors.secondary,
+    onSecondary: AppColors.onSecondary,
+    secondaryContainer: AppColors.secondaryContainer,
+    onSecondaryContainer: AppColors.onSecondaryContainer,
+    tertiary: AppColors.tertiary,
+    onTertiary: AppColors.onTertiary,
+    tertiaryContainer: AppColors.tertiaryContainer,
+    onTertiaryContainer: AppColors.onTertiaryContainer,
     error: Color(0xFFFFB4AB),
     onError: Color(0xFF690005),
     errorContainer: Color(0xFF93000A),
     onErrorContainer: Color(0xFFFFDAD6),
-    surface: Color(0xFF131313),
-    onSurface: Color(0xFFE5E2E1),
-    surfaceContainerLowest: Color(0xFF0E0E0E),
+    surface: AppColors.surface,
+    onSurface: AppColors.onSurface,
+    surfaceContainerLowest: AppColors.surfaceLowest,
     surfaceContainerLow: Color(0xFF1C1B1B),
     surfaceContainer: Color(0xFF201F1F),
     surfaceContainerHigh: Color(0xFF2A2A2A),

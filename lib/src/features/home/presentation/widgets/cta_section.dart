@@ -31,7 +31,7 @@ class CTASection extends StatelessWidget {
                   Text(
                     'cyberpunk.establish_link'.tr(),
                     style: AppTextStyles.sectionTitle.copyWith(
-                      color: const Color(0xFF8B5CF6), // Neon Purple
+                      color: AppColors.neonPurple,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -51,7 +51,7 @@ class CTASection extends StatelessWidget {
                     context,
                     Icons.mail_outline_rounded,
                     'cyberpunk.email_slug'.tr(),
-                    const Color(0xFF8B5CF6),
+                    AppColors.neonPurple,
                     () => launchUrl(Uri.parse(BrandLinks.mailtoGeneral), mode: LaunchMode.externalApplication),
                   ),
                   const SizedBox(height: 24),
@@ -59,7 +59,7 @@ class CTASection extends StatelessWidget {
                     context,
                     Icons.location_on_outlined,
                     'cyberpunk.location_slug'.tr(),
-                    const Color(0xFF10B981),
+                    AppColors.cyberGreen,
                     () {},
                   ),
                 ],
@@ -85,11 +85,11 @@ class CTASection extends StatelessWidget {
                     // EXECUTE_TRANSMISSION BUTTON
                     ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF8B5CF6),
-                        foregroundColor: const Color(0xFF050505),
+                        backgroundColor: AppColors.neonPurple,
+                        foregroundColor: AppColors.voidBlack,
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         elevation: 8,
-                        shadowColor: const Color(0xFF8B5CF6).withValues(alpha: 0.5),
+                        shadowColor: AppColors.neonPurple.withValues(alpha: 0.5),
                         shape: const RoundedRectangleBorder(
                           borderRadius: AppBorders.xs,
                         ),
@@ -99,7 +99,7 @@ class CTASection extends StatelessWidget {
                       label: Text(
                         'cyberpunk.execute_transmission'.tr(),
                         style: AppTextStyles.buttonText.copyWith(
-                          color: const Color(0xFF050505),
+                          color: AppColors.voidBlack,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1.5,
                         ),
@@ -167,7 +167,7 @@ class CTASection extends StatelessWidget {
         const SizedBox(height: 8),
         TextField(
           maxLines: maxLines,
-          cursorColor: const Color(0xFF8B5CF6),
+          cursorColor: AppColors.neonPurple,
           style: AppTextStyles.bodySmall.copyWith(
             color: context.colors.onSurface,
             fontWeight: FontWeight.w600,
@@ -188,7 +188,7 @@ class CTASection extends StatelessWidget {
             ),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-                color: Color(0xFF8B5CF6),
+                color: AppColors.neonPurple,
                 width: 1.5,
               ),
               borderRadius: AppBorders.xs,

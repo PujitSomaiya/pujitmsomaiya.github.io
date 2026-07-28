@@ -191,7 +191,7 @@ class _LoginView extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                              backgroundColor: const Color(0xFFEA4335).withValues(alpha: 0.8),
+                              backgroundColor: AppColors.googleRed.withValues(alpha: 0.8),
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: AppBorders.button,
@@ -206,7 +206,7 @@ class _LoginView extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                              backgroundColor: const Color(0xFF4285F4),
+                              backgroundColor: AppColors.googleBlue,
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: AppBorders.button,
@@ -221,7 +221,7 @@ class _LoginView extends StatelessWidget {
                           child: TextButton(
                             onPressed: () {},
                             style: TextButton.styleFrom(
-                              backgroundColor: const Color(0xFF000000),
+                              backgroundColor: AppColors.appleBlack,
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: AppBorders.button,

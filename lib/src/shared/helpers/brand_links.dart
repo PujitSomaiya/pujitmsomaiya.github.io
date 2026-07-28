@@ -2,7 +2,7 @@ class BrandLinks {
   BrandLinks._();
 
   static const String developerName = 'Pujit Somaiya';
-  static const String email = 'pujit555@gmail.com';
+  static const String email = 'pujit.m.somaiya@gmail.com';
   static const String linkedin = 'https://www.linkedin.com/in/pujitmsomaiya';
   static const String github = 'https://github.com/PujitSomaiya';
   static const String resume = 'https://drive.google.com/file/d/1EmMZnNJ6SXw-TQXNh8iKKn1yjM3nskNv/view?usp=sharing';

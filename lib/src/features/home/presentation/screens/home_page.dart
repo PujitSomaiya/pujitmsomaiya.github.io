@@ -109,7 +109,7 @@ class HomePage extends HookWidget {
     // Loader HUD overlay screen
     if (isBooting.value) {
       return Scaffold(
-        backgroundColor: const Color(0xFF050505),
+        backgroundColor: AppColors.voidBlack,
         body: Center(
           child: Container(
             constraints: const BoxConstraints(maxWidth: 550),
@@ -448,7 +448,7 @@ class HomePage extends HookWidget {
               right: 24,
               child: FloatingActionButton(
                 backgroundColor: context.colors.primaryContainer,
-                foregroundColor: const Color(0xFF050505),
+                foregroundColor: AppColors.voidBlack,
                 shape: const CircleBorder(),
                 elevation: 6,
                 onPressed: () => showHireMeDialog(context),
@@ -538,7 +538,7 @@ class _ScanlineOverlayState extends State<ScanlineOverlay> with SingleTickerProv
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    const Color(0xFF8B5CF6).withValues(alpha: 0.04),
+                    AppColors.neonPurple.withValues(alpha: 0.04),
                     Colors.transparent,
                   ],
                 ),

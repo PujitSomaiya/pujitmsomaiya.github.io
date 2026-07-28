@@ -20,7 +20,7 @@ class FooterSection extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: padding, vertical: 64),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFF050505),
+        color: AppColors.voidBlack,
         border: Border(
           top: BorderSide(
             color: context.colors.outlineVariant.withValues(alpha: 0.3),
@@ -104,7 +104,7 @@ class FooterSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 48),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: const Color(0xFF050505),
+        color: AppColors.voidBlack,
         border: Border(
           top: BorderSide(
             color: context.colors.outlineVariant.withValues(alpha: 0.3),
@@ -123,14 +123,14 @@ class FooterSection extends StatelessWidget {
                 height: 6,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFF10B981), // Cyber Green
+                  color: AppColors.cyberGreen,
                 ),
               ),
               const SizedBox(width: 8),
               Text(
                 'cyberpunk.system_online'.tr().toUpperCase(),
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: const Color(0xFF10B981), // Cyber Green
+                  color: AppColors.cyberGreen,
                   fontWeight: FontWeight.bold,
                   fontSize: 10,
                   letterSpacing: 1,

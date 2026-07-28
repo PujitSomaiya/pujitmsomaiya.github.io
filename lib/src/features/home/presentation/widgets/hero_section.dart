@@ -36,7 +36,7 @@ class HeroSection extends StatelessWidget {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF8B5CF6).withValues(alpha: 0.15),
+                            color: AppColors.neonPurple.withValues(alpha: 0.15),
                             blurRadius: 100,
                             spreadRadius: 20,
                           ),
@@ -50,12 +50,12 @@ class HeroSection extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: const Color(0xFF8B5CF6),
+                        color: AppColors.neonPurple,
                         width: 2.5,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF8B5CF6).withValues(alpha: 0.3),
+                          color: AppColors.neonPurple.withValues(alpha: 0.3),
                           blurRadius: 30,
                         )
                       ],
@@ -72,10 +72,10 @@ class HeroSection extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF10B981).withValues(alpha: 0.05),
+                  color: AppColors.cyberGreen.withValues(alpha: 0.05),
                   borderRadius: AppBorders.full,
                   border: Border.all(
-                    color: const Color(0xFF10B981).withValues(alpha: 0.3),
+                    color: AppColors.cyberGreen.withValues(alpha: 0.3),
                   ),
                 ),
                 child: Row(
@@ -86,7 +86,7 @@ class HeroSection extends StatelessWidget {
                       height: 8,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Color(0xFF10B981),
+                        color: AppColors.cyberGreen,
                       ),
                     ).animate(onPlay: (controller) => controller.repeat(reverse: true))
                      .fade(duration: const Duration(milliseconds: 600)),
@@ -94,7 +94,7 @@ class HeroSection extends StatelessWidget {
                     Text(
                       'portfolio.available_opportunities'.tr().toUpperCase(),
                       style: AppTextStyles.bodySmall.copyWith(
-                        color: const Color(0xFF10B981),
+                        color: AppColors.cyberGreen,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.5,
                       ),
@@ -158,10 +158,10 @@ class HeroSection extends StatelessWidget {
                 mainAxisSpacing: 24,
                 childAspectRatio: 1.8,
                 children: [
-                  _buildStatCard(context, 'portfolio.experience.subtitle'.tr().toUpperCase(), '${'portfolio.stats.years_exp'.tr()} ${'portfolio.stats.years_exp_label'.tr().toUpperCase()}', const Color(0xFF8B5CF6)),
-                  _buildStatCard(context, 'portfolio.work.subtitle'.tr().toUpperCase(), '${'portfolio.stats.projects'.tr()} ${'portfolio.stats.projects_label'.tr().toUpperCase()}', const Color(0xFF10B981)),
-                  _buildStatCard(context, 'portfolio.skills.subtitle'.tr().toUpperCase(), '${'portfolio.stats.frameworks'.tr()} ${'portfolio.stats.frameworks_label'.tr().toUpperCase()}', const Color(0xFFF7931E)),
-                  _buildStatCard(context, 'portfolio.about.title'.tr().toUpperCase(), '${'portfolio.stats.industries'.tr()} ${'portfolio.stats.industries_label'.tr().toUpperCase()}', const Color(0xFFD0BCFF)),
+                  _buildStatCard(context, 'portfolio.experience.subtitle'.tr().toUpperCase(), '${'portfolio.stats.years_exp'.tr()} ${'portfolio.stats.years_exp_label'.tr().toUpperCase()}', AppColors.neonPurple),
+                  _buildStatCard(context, 'portfolio.work.subtitle'.tr().toUpperCase(), '${'portfolio.stats.projects'.tr()} ${'portfolio.stats.projects_label'.tr().toUpperCase()}', AppColors.cyberGreen),
+                  _buildStatCard(context, 'portfolio.skills.subtitle'.tr().toUpperCase(), '${'portfolio.stats.frameworks'.tr()} ${'portfolio.stats.frameworks_label'.tr().toUpperCase()}', AppColors.warningOrange),
+                  _buildStatCard(context, 'portfolio.about.title'.tr().toUpperCase(), '${'portfolio.stats.industries'.tr()} ${'portfolio.stats.industries_label'.tr().toUpperCase()}', AppColors.lavender),
                 ],
               ),
               const SizedBox(height: 64),
@@ -264,11 +264,11 @@ class HeroSection extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 // Outer slow rotating ring
-                const _RotatingRing(
+                _RotatingRing(
                   width: 128,
                   height: 128,
-                  borderColor: Color(0x4D8B5CF6), // Purple opacity
-                  duration: Duration(seconds: 12),
+                  borderColor: AppColors.neonPurple.withValues(alpha: 0.3), // Purple opacity
+                  duration: const Duration(seconds: 12),
                 ),
                 // Inner static ring
                 Container(
@@ -277,7 +277,7 @@ class HeroSection extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: const Color(0x6610B981), // Green opacity
+                      color: AppColors.cyberGreen.withValues(alpha: 0.4), // Green opacity
                       width: 1,
                     ),
                   ),
@@ -288,14 +288,14 @@ class HeroSection extends StatelessWidget {
                   height: 96,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: const Color(0xFF0E0E0E),
+                    color: AppColors.surfaceLowest,
                     border: Border.all(
-                      color: const Color(0xFF8B5CF6),
+                      color: AppColors.neonPurple,
                       width: 1,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF8B5CF6).withValues(alpha: 0.25),
+                        color: AppColors.neonPurple.withValues(alpha: 0.25),
                         blurRadius: 15,
                       )
                     ],
@@ -328,7 +328,7 @@ class HeroSection extends StatelessWidget {
               5,
               (_) => const Icon(
                 Icons.star_rounded,
-                color: Color(0xFFF7931E), // Warning Orange
+                color: AppColors.warningOrange, // Warning Orange
                 size: 16,
               ),
             ),
@@ -350,7 +350,7 @@ class HeroSection extends StatelessWidget {
 
           DecoratedBox(
             decoration: BoxDecoration(
-              color: const Color(0xB3161616),
+              color: AppColors.surfaceGray.withValues(alpha: 0.7),
               border: Border.all(
                 color: context.colors.outlineVariant.withValues(alpha: 0.15),
                 width: 1,
@@ -370,7 +370,7 @@ class HeroSection extends StatelessWidget {
                     bottom: 0,
                     child: Container(
                       width: 4,
-                      color: const Color(0xFFF7931E),
+                      color: AppColors.warningOrange,
                     ),
                   ),
                   Padding(
@@ -381,13 +381,13 @@ class HeroSection extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
                           decoration: const BoxDecoration(
-                            color: Color(0xFFF7931E),
+                            color: AppColors.warningOrange,
                             borderRadius: BorderRadius.zero,
                           ),
                           child: Text(
                             'cyberpunk.bio'.tr(),
                             style: AppTextStyles.bodySmall.copyWith(
-                              color: const Color(0xFF050505),
+                              color: AppColors.voidBlack,
                               fontWeight: FontWeight.bold,
                               fontSize: 9,
                             ),
@@ -401,7 +401,7 @@ class HeroSection extends StatelessWidget {
                               Text(
                                 'cyberpunk.bio_headline'.tr(),
                                 style: AppTextStyles.bodySmall.copyWith(
-                                  color: const Color(0xFFF7931E),
+                                  color: AppColors.warningOrange,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 10,
                                 ),

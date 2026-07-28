@@ -36,10 +36,10 @@ class _GreenPulseDotState extends State<GreenPulseDot>
           height: 8,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: const Color(0xFF4FDBC8),
+            color: AppColors.pulseDot,
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF4FDBC8).withValues(alpha: 0.2 + 0.6 * _controller.value),
+                color: AppColors.pulseDot.withValues(alpha: 0.2 + 0.6 * _controller.value),
                 blurRadius: 4 + 6 * _controller.value,
                 spreadRadius: 2 * _controller.value,
               ),

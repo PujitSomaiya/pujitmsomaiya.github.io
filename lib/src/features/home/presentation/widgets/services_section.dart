@@ -13,14 +13,14 @@ class ServicesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final servicesList = [
-      (Icons.android_rounded, 'portfolio.services.s1_title'.tr().toUpperCase(), 'portfolio.services.s1_desc'.tr(), const Color(0xFF8B5CF6)), // Neon Purple
-      (Icons.devices_rounded, 'portfolio.services.s2_title'.tr().toUpperCase(), 'portfolio.services.s2_desc'.tr(), const Color(0xFF10B981)), // Cyber Green
-      (Icons.bug_report_outlined, 'portfolio.services.s3_title'.tr().toUpperCase(), 'portfolio.services.s3_desc'.tr(), const Color(0xFFF7931E)), // Warning Orange
-      (Icons.palette_outlined, 'portfolio.services.s4_title'.tr().toUpperCase(), 'portfolio.services.s4_desc'.tr(), const Color(0xFFD0BCFF)), // Primary/Lavender
-      (Icons.api_rounded, 'portfolio.services.s5_title'.tr().toUpperCase(), 'portfolio.services.s5_desc'.tr(), const Color(0xFF8B5CF6)),
-      (Icons.payments_outlined, 'portfolio.services.s6_title'.tr().toUpperCase(), 'portfolio.services.s6_desc'.tr(), const Color(0xFF10B981)),
-      (Icons.speed_rounded, 'portfolio.services.s7_title'.tr().toUpperCase(), 'portfolio.services.s7_desc'.tr(), const Color(0xFFF7931E)),
-      (Icons.cloud_upload_outlined, 'portfolio.services.s8_title'.tr().toUpperCase(), 'portfolio.services.s8_desc'.tr(), const Color(0xFFD0BCFF)),
+      (Icons.android_rounded, 'portfolio.services.s1_title'.tr().toUpperCase(), 'portfolio.services.s1_desc'.tr(), AppColors.neonPurple), // Neon Purple
+      (Icons.devices_rounded, 'portfolio.services.s2_title'.tr().toUpperCase(), 'portfolio.services.s2_desc'.tr(), AppColors.cyberGreen), // Cyber Green
+      (Icons.bug_report_outlined, 'portfolio.services.s3_title'.tr().toUpperCase(), 'portfolio.services.s3_desc'.tr(), AppColors.warningOrange), // Warning Orange
+      (Icons.palette_outlined, 'portfolio.services.s4_title'.tr().toUpperCase(), 'portfolio.services.s4_desc'.tr(), AppColors.primary), // Primary/Lavender
+      (Icons.api_rounded, 'portfolio.services.s5_title'.tr().toUpperCase(), 'portfolio.services.s5_desc'.tr(), AppColors.neonPurple),
+      (Icons.payments_outlined, 'portfolio.services.s6_title'.tr().toUpperCase(), 'portfolio.services.s6_desc'.tr(), AppColors.cyberGreen),
+      (Icons.speed_rounded, 'portfolio.services.s7_title'.tr().toUpperCase(), 'portfolio.services.s7_desc'.tr(), AppColors.warningOrange),
+      (Icons.cloud_upload_outlined, 'portfolio.services.s8_title'.tr().toUpperCase(), 'portfolio.services.s8_desc'.tr(), AppColors.primary),
     ];
 
     if (isMobile) {
@@ -99,7 +99,7 @@ class ServicesSection extends StatelessWidget {
                 height: 8,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFF8B5CF6), // Neon Purple
+                  color: AppColors.neonPurple,
                 ),
               ).animate(onPlay: (controller) => controller.repeat(reverse: true))
                .fade(duration: const Duration(milliseconds: 600)),
@@ -107,7 +107,7 @@ class ServicesSection extends StatelessWidget {
               Text(
                 'cyberpunk.mission_solutions'.tr().toUpperCase(),
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: const Color(0xFF8B5CF6),
+                  color: AppColors.neonPurple,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
@@ -131,7 +131,7 @@ class ServicesSection extends StatelessWidget {
               final service = services[index];
               return DecoratedBox(
                 decoration: BoxDecoration(
-                  color: const Color(0xB3161616),
+                  color: AppColors.surfaceGray.withValues(alpha: 0.7),
                   border: Border.all(
                     color: context.colors.outlineVariant.withValues(alpha: 0.15),
                     width: 1,

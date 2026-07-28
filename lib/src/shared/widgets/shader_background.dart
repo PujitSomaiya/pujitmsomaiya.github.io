@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:pujit_portfolio/src/imports/imports.dart';
 
@@ -76,7 +75,7 @@ class _ShaderBackgroundState extends State<ShaderBackground> with SingleTickerPr
             )
           else
             // Fallback background color matching the shader base color
-            Container(color: const Color(0xFF05030A)),
+            Container(color: AppColors.shaderBg),
           widget.child,
         ],
       ),

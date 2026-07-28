@@ -159,7 +159,7 @@ class TechStackSection extends StatelessWidget {
                 height: 8,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFF10B981), // Cyber Green
+                  color: AppColors.cyberGreen,
                 ),
               ).animate(onPlay: (controller) => controller.repeat(reverse: true))
                .fade(duration: const Duration(milliseconds: 600)),
@@ -167,7 +167,7 @@ class TechStackSection extends StatelessWidget {
               Text(
                 'cyberpunk.core_arsenal_stats'.tr().toUpperCase(),
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: const Color(0xFF10B981),
+                  color: AppColors.cyberGreen,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
@@ -189,19 +189,19 @@ class TechStackSection extends StatelessWidget {
                 context,
                 'portfolio.skills.category_mobile'.tr().toUpperCase(),
                 'Android, Flutter, Kotlin, Java, Dart, React Native',
-                const Color(0xFF8B5CF6), // Neon Purple
+                AppColors.neonPurple,
               ),
               _buildMobileStatPanel(
                 context,
                 'portfolio.skills.category_architecture'.tr().toUpperCase(),
                 'MVVM, Clean Arch, Design Patterns, BLoC, Unit Testing',
-                const Color(0xFF10B981), // Cyber Green
+                AppColors.cyberGreen,
               ),
               _buildMobileStatPanel(
                 context,
                 'portfolio.skills.category_backend_data'.tr().toUpperCase(),
                 'Firebase, REST, SQLite, Supabase, GraphQL',
-                const Color(0xFFF7931E), // Warning Orange
+                AppColors.warningOrange,
               ),
               _buildMobileStatPanel(
                 context,
@@ -219,7 +219,7 @@ class TechStackSection extends StatelessWidget {
   Widget _buildMobileStatPanel(BuildContext context, String title, String subtitle, Color accentColor) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: const Color(0xB3161616),
+        color: AppColors.surfaceGray.withValues(alpha: 0.7),
         border: Border.all(
           color: context.colors.outlineVariant.withValues(alpha: 0.15),
           width: 1,

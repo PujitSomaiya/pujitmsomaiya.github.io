@@ -16,7 +16,7 @@ class ExperienceSection extends StatelessWidget {
         'company': 'portfolio.experience.role1_company'.tr(),
         'period': 'portfolio.experience.role1_period'.tr(),
         'period_slug': '2021.01 — PRESENT',
-        'color': const Color(0xFF8B5CF6), // Neon Purple
+        'color': AppColors.neonPurple, // Neon Purple
         'role_tag': 'Lead Mobile Architect',
         'bullets': [
           'portfolio.experience.role1_b1'.tr(),
@@ -29,7 +29,7 @@ class ExperienceSection extends StatelessWidget {
         'company': 'portfolio.experience.role2_company'.tr(),
         'period': 'portfolio.experience.role2_period'.tr(),
         'period_slug': '2018.06 — 2020.12',
-        'color': const Color(0xFF10B981), // Cyber Green
+        'color': AppColors.cyberGreen, // Cyber Green
         'role_tag': 'Mobile Specialist',
         'bullets': [
           'portfolio.experience.role2_b1'.tr(),
@@ -42,7 +42,7 @@ class ExperienceSection extends StatelessWidget {
         'company': 'portfolio.experience.role3_company'.tr(),
         'period': 'portfolio.experience.role3_period'.tr(),
         'period_slug': '2018.01 — 2018.05',
-        'color': const Color(0xFFF7931E), // Warning Orange
+        'color': AppColors.warningOrange, // Warning Orange
         'role_tag': 'Mobile Intern',
         'desc': 'portfolio.experience.role3_desc'.tr()
       },
@@ -68,7 +68,7 @@ class ExperienceSection extends StatelessWidget {
                 Text(
                   '${'cyberpunk.career_path'.tr()} // ${'portfolio.experience.subtitle'.tr().toUpperCase()}',
                   style: AppTextStyles.sectionTitle.copyWith(
-                    color: const Color(0xFF8B5CF6), // Neon Purple
+                    color: AppColors.neonPurple,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -100,8 +100,8 @@ class ExperienceSection extends StatelessWidget {
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [
-                            Color(0xFF8B5CF6), // Neon Purple
-                            Color(0xFF10B981), // Cyber Green
+                            AppColors.neonPurple,
+                            AppColors.cyberGreen,
                             Colors.transparent,
                           ],
                         ),
@@ -148,7 +148,7 @@ class ExperienceSection extends StatelessWidget {
                         Text(
                           '@${(exp['company'] as String).replaceAll('@', '')}',
                           style: AppTextStyles.bodySmall.copyWith(
-                            color: isEven ? const Color(0xFF10B981) : const Color(0xFF8B5CF6),
+                            color: isEven ? AppColors.cyberGreen : AppColors.neonPurple,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -233,7 +233,7 @@ class ExperienceSection extends StatelessWidget {
                               height: 16,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: const Color(0xFF050505),
+                                color: AppColors.voidBlack,
                                 border: Border.all(
                                   color: color,
                                   width: 4,
@@ -278,15 +278,15 @@ class ExperienceSection extends StatelessWidget {
                 height: 8,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFFD0BCFF), // Primary/Lavender
+                  color: AppColors.lavender, // Primary/Lavender
                 ),
               ).animate(onPlay: (controller) => controller.repeat(reverse: true))
                .fade(duration: const Duration(milliseconds: 600)),
-              const SizedBox(width: 8),
+               const SizedBox(width: 8),
               Text(
                 'cyberpunk.career_path'.tr().toUpperCase(),
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: const Color(0xFFD0BCFF),
+                  color: AppColors.lavender,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
@@ -325,7 +325,7 @@ class ExperienceSection extends StatelessWidget {
                             height: 15,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: const Color(0xFF050505),
+                              color: AppColors.voidBlack,
                               border: Border.all(color: color, width: 4),
                               boxShadow: [
                                 BoxShadow(
@@ -386,7 +386,7 @@ class ExperienceSection extends StatelessWidget {
                 height: 8,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFF8B5CF6), // Neon Purple
+                  color: AppColors.neonPurple,
                 ),
               ).animate(onPlay: (controller) => controller.repeat(reverse: true))
                .fade(duration: const Duration(milliseconds: 600)),
@@ -394,7 +394,7 @@ class ExperienceSection extends StatelessWidget {
               Text(
                 'cyberpunk.employment_logs'.tr().toUpperCase(),
                 style: AppTextStyles.bodySmall.copyWith(
-                  color: const Color(0xFF8B5CF6),
+                  color: AppColors.neonPurple,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),

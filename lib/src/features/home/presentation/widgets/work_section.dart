@@ -17,7 +17,7 @@ class WorkSection extends StatelessWidget {
         'tag': 'portfolio.work.tags.fintech'.tr(),
         'icon': Icons.payments_rounded,
         'progress': 0.95,
-        'accent': const Color(0xFF10B981), // Cyber Green
+        'accent': AppColors.cyberGreen, // Cyber Green
         'img': BrandLinks.project1Image,
       },
       {
@@ -26,7 +26,7 @@ class WorkSection extends StatelessWidget {
         'tag': 'portfolio.work.tags.ai_health'.tr(),
         'icon': Icons.smart_toy_rounded,
         'progress': 0.88,
-        'accent': const Color(0xFF8B5CF6), // Neon Purple
+        'accent': AppColors.neonPurple, // Neon Purple
         'img': BrandLinks.project2Image,
       },
       {
@@ -35,7 +35,7 @@ class WorkSection extends StatelessWidget {
         'tag': 'portfolio.work.tags.proptech'.tr(),
         'icon': Icons.vpn_key_rounded,
         'progress': 0.92,
-        'accent': const Color(0xFFF7931E), // Warning Orange
+        'accent': AppColors.warningOrange, // Warning Orange
         'img': BrandLinks.project3Image,
       },
       {
@@ -44,7 +44,7 @@ class WorkSection extends StatelessWidget {
         'tag': 'portfolio.work.tags.payments'.tr(),
         'icon': Icons.account_balance_wallet_rounded,
         'progress': 0.90,
-        'accent': const Color(0xFFD0BCFF), // Lavender/Primary
+        'accent': AppColors.lavender, // Lavender/Primary
         'img': BrandLinks.project1Image,
       },
       {
@@ -53,7 +53,7 @@ class WorkSection extends StatelessWidget {
         'tag': 'portfolio.work.tags.enterprise'.tr(),
         'icon': Icons.business_center_rounded,
         'progress': 0.85,
-        'accent': const Color(0xFF10B981), // Cyber Green
+        'accent': AppColors.cyberGreen, // Cyber Green
         'img': BrandLinks.project2Image,
       },
       {
@@ -62,7 +62,7 @@ class WorkSection extends StatelessWidget {
         'tag': 'portfolio.work.tags.retail'.tr(),
         'icon': Icons.shopping_cart_rounded,
         'progress': 0.89,
-        'accent': const Color(0xFF8B5CF6), // Neon Purple
+        'accent': AppColors.neonPurple, // Neon Purple
         'img': BrandLinks.project3Image,
       },
     ];
@@ -146,7 +146,7 @@ class WorkSection extends StatelessWidget {
                     height: 8,
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Color(0xFF10B981), // Cyber Green
+                      color: AppColors.cyberGreen,
                     ),
                   ).animate(onPlay: (controller) => controller.repeat(reverse: true))
                    .fade(duration: const Duration(milliseconds: 600)),
@@ -154,7 +154,7 @@ class WorkSection extends StatelessWidget {
                   Text(
                     'cyberpunk.project_archives'.tr().toUpperCase(),
                     style: AppTextStyles.bodySmall.copyWith(
-                      color: const Color(0xFF10B981),
+                      color: AppColors.cyberGreen,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2,
                     ),
@@ -187,7 +187,7 @@ class WorkSection extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 12),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    color: const Color(0xB3161616),
+                    color: AppColors.surfaceGray.withValues(alpha: 0.7),
                     border: Border.all(
                       color: context.colors.outlineVariant.withValues(alpha: 0.15),
                       width: 1,

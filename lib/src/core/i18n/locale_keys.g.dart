@@ -28,7 +28,7 @@ class CodegenLoader extends AssetLoader{
     "close": "Close",
     "email": "Email",
     "linkedin": "LinkedIn",
-    "email_value": "pujit555@gmail.com",
+    "email_value": "pujit.m.somaiya@gmail.com",
     "linkedin_value": "linkedin.com/in/pujitmsomaiya"
   },
   "nav": {

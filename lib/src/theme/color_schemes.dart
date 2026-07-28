@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
 
 /// App-specific colors that aren't part of the standard [ColorScheme].
 /// Access via `context.appColors` (defined in `context_extension.dart`).
@@ -107,18 +108,18 @@ class AppPalettes {
   );
 
   static const dark = AppColorsExtension(
-    success: Color(0xFF10B981),
+    success: AppColors.cyberGreen,
     onSuccess: Color(0xFF003824),
     successContainer: Color(0xFF00311F),
     onSuccessContainer: Color(0xFF4EDEA3),
-    warning: Color(0xFFF7931E),
+    warning: AppColors.warningOrange,
     onWarning: Color(0xFF4B2800),
     warningContainer: Color(0xFF412200),
     onWarningContainer: Color(0xFFFFB875),
-    info: Color(0xFF8B5CF6),
+    info: AppColors.neonPurple,
     onInfo: Color(0xFF3C0091),
     infoContainer: Color(0xFF340080),
-    onInfoContainer: Color(0xFFD0BCFF),
+    onInfoContainer: AppColors.primary,
   );
 
 }
