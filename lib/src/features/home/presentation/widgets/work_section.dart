@@ -45,7 +45,7 @@ class WorkSection extends StatelessWidget {
         'icon': Icons.account_balance_wallet_rounded,
         'progress': 0.90,
         'accent': AppColors.lavender, // Lavender/Primary
-        'img': BrandLinks.project1Image,
+        'img': BrandLinks.project4Image,
       },
       {
         'title': 'portfolio.work.projects.p5_title'.tr().toUpperCase(),
@@ -54,7 +54,7 @@ class WorkSection extends StatelessWidget {
         'icon': Icons.business_center_rounded,
         'progress': 0.85,
         'accent': AppColors.cyberGreen, // Cyber Green
-        'img': BrandLinks.project2Image,
+        'img': BrandLinks.project5Image,
       },
       {
         'title': 'portfolio.work.projects.p6_title'.tr().toUpperCase(),
@@ -63,7 +63,7 @@ class WorkSection extends StatelessWidget {
         'icon': Icons.shopping_cart_rounded,
         'progress': 0.89,
         'accent': AppColors.neonPurple, // Neon Purple
-        'img': BrandLinks.project3Image,
+        'img': BrandLinks.project6Image,
       },
     ];
 
@@ -330,7 +330,10 @@ class _ProjectCardState extends State<_ProjectCard> {
                         errorWidget: (context, url, error) => ColoredBox(
                           color: context.colors.surfaceContainerHighest,
                           child: const Center(
-                            child: Icon(Icons.image_not_supported_outlined, size: 40),
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              size: 40,
+                            ),
                           ),
                         ),
                       ),

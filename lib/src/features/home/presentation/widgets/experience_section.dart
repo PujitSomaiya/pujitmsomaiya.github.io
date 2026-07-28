@@ -295,115 +295,7 @@ class ExperienceSection extends StatelessWidget {
           ),
           const SizedBox(height: 24),
 
-          // Career Path timeline bullet list
-          Padding(
-            padding: const EdgeInsets.only(left: 8),
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 7,
-                  top: 8,
-                  bottom: 12,
-                  child: Container(
-                    width: 1,
-                    color: context.colors.outlineVariant.withValues(alpha: 0.3),
-                  ),
-                ),
-                Column(
-                  children: List.generate(experiences.length, (index) {
-                    final exp = experiences[index];
-                    final color = exp['color'] as Color;
-
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 24),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 4),
-                            width: 15,
-                            height: 15,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.voidBlack,
-                              border: Border.all(color: color, width: 4),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: color.withValues(alpha: 0.4),
-                                  blurRadius: 4,
-                                )
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 20),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  (exp['period'] as String).toUpperCase(),
-                                  style: AppTextStyles.bodySmall.copyWith(
-                                    color: color,
-                                    fontSize: 9,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  (exp['title'] as String).toUpperCase(),
-                                  style: AppTextStyles.bodySmall.copyWith(
-                                    color: context.colors.onSurface,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 11,
-                                  ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  '${exp['company']} // ${exp['role_tag']}',
-                                  style: AppTextStyles.bodySmall.copyWith(
-                                    color: context.colors.onSurfaceVariant.withValues(alpha: 0.6),
-                                    fontSize: 10,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 24),
-
-          // 2. EMPLOYMENT_LOGS Title Header
-          Row(
-            children: [
-              Container(
-                width: 8,
-                height: 8,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.neonPurple,
-                ),
-              ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-               .fade(duration: const Duration(milliseconds: 600)),
-              const SizedBox(width: 8),
-              Text(
-                'cyberpunk.employment_logs'.tr().toUpperCase(),
-                style: AppTextStyles.bodySmall.copyWith(
-                  color: AppColors.neonPurple,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 2,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-
-          // Detailed logs timeline
+          // Detailed logs timeline showing all experiences
           Padding(
             padding: const EdgeInsets.only(left: 8),
             child: Stack(
@@ -418,7 +310,7 @@ class ExperienceSection extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  children: List.generate(experiences.length - 1, (index) {
+                  children: List.generate(experiences.length, (index) {
                     final exp = experiences[index];
                     final color = exp['color'] as Color;
                     final description = exp.containsKey('bullets')

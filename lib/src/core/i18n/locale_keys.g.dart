@@ -241,7 +241,7 @@ class CodegenLoader extends AssetLoader{
     "linkedin_upper": "LINKEDIN",
     "resume_upper": "RESUME",
     "all_rights_reserved": "ALL_RIGHTS_RESERVED",
-    "copyright_core": "© 2024 PUJIT_SOMAIYA_CORE // {}",
+    "copyright_core": "© {} PUJIT_SOMAIYA_CORE // {}",
     "diagnostics": "ENCRYPTION: AES-256 // STATUS: STANDBY // KOTLIN_VER: 1.9.0 // LATENCY: 9ms",
     "bio_headline": "Building scalable, secure, and high-performance mobile apps.",
     "bio_desc": "Senior Mobile App Engineer with 6+ years of experience building Android and Flutter applications across FinTech, AI-powered apps, payments, e-commerce, and business platforms."

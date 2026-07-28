@@ -59,7 +59,7 @@ class FooterSection extends StatelessWidget {
 
               // Copyright
               Text(
-                'cyberpunk.copyright_core'.tr(args: ['cyberpunk.all_rights_reserved'.tr()]),
+                'cyberpunk.copyright_core'.tr(args: [DateTime.now().year.toString(), 'cyberpunk.all_rights_reserved'.tr()]),
                 style: AppTextStyles.bodySmall.copyWith(
                   color: context.colors.onSurfaceVariant.withValues(alpha: 0.4),
                   fontSize: 11,
@@ -173,7 +173,7 @@ class FooterSection extends StatelessWidget {
 
           // Monospace Copyright and Reserved lines
           Text(
-            'cyberpunk.copyright_core'.tr(args: ['cyberpunk.all_rights_reserved'.tr()]),
+            'cyberpunk.copyright_core'.tr(args: [DateTime.now().year.toString(), 'cyberpunk.all_rights_reserved'.tr()]),
             textAlign: TextAlign.center,
             style: AppTextStyles.bodySmall.copyWith(
               color: context.colors.onSurfaceVariant.withValues(alpha: 0.3),
